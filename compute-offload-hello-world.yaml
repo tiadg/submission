@@ -1,0 +1,61 @@
+tosca_definitions_version: compute_offload_hello_world_yaml
+
+description: Template for deploying the "Hello World" sample cloud component of the Compute Offload solution.
+
+topology_template:
+
+node_templates:
+	compute:
+		type: tosca.nodes.Compute
+			capabilities:
+			# Host container properties
+			host:
+		  	properties:
+				# Compute properties
+				num_cpus: 4
+				disk_size: 100 GB
+			mem_size: 16 GB
+		os:
+		  properties:
+			# host Operating System image properties
+			architecture: x86_64
+			type: linux 
+			distribution: rhel 
+			version: 7.7 
+
+	app:
+		type: tosca.nodes.WebServer.Nodejs
+		requirements:
+			- host: app_server
+		interfaces:
+			Standard:
+	  			create: hello-world.sh
+
+    internal_network:
+    	type: tosca.nodes.network.Network
+     	properties:
+        	network_name: 'internal'
+        	ip_version: 4
+        	cidr: '10.1.2.0/24'
+        	start_ip: '10.1.2.100'
+       		end_ip: '10.1.2.119'
+        	gateway_ip: '10.1.2.1'
+
+    my_port:
+     	type: tosca.nodes.network.Port
+      	requirements:
+        	- binding: compute
+        	- link: internal_network
+
+    external_network:
+      type: something
+      # Definition incomplete
+
+    router:
+      type: something
+      # Definition incomplete
+
+    external_connector:
+      type: something
+      # Definition incomplete
+

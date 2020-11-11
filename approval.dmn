@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_0rfijcv" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.7.3">
+  <decision id="approvalsForCloud" name="Approvals">
+    <decisionTable id="decisionTable_1" hitPolicy="FIRST">
+      <input id="InputClause_1prr1ss" label="Customer" camunda:inputVariable="customer">
+        <inputExpression id="LiteralExpression_0mqfcdu" typeRef="string" expressionLanguage="javascript">
+          <text></text>
+        </inputExpression>
+        <inputValues id="UnaryTests_1vi4mw3">
+          <text>"Alpha","Gamma","Beta","Eta","Delta"</text>
+        </inputValues>
+      </input>
+      <output id="output_1" label="Aprroval" name="approve" typeRef="boolean" />
+      <rule id="DecisionRule_0otfhnh">
+        <description>"true"</description>
+        <inputEntry id="UnaryTests_1qzl91a">
+          <text>"Alpha","Gamma","Beta","Eta"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_055o9q6">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mw1jgl">
+        <description>"false"</description>
+        <inputEntry id="UnaryTests_1tylcog">
+          <text>"Delta"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0p15rb4">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_088obzy">
+        <description>"false"</description>
+        <inputEntry id="UnaryTests_0cm2tps">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0oiqgo7">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

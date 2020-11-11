@@ -1,0 +1,53 @@
+module cfs-vpn-cloud-connect {
+
+    yang-version "1";
+    namespace "http://provider.rmit.edu.au/yang/cfs";
+    prefix "rmit-cfs";
+    organization "RMIT University";
+    description "Model for exposing a CFS to connect a VPN to a cloud";
+
+    // TODO: Update date and name below
+    revision "2020-07-11" {
+        description "TIA DIRNBEK GABRON - CFS Definition created";
+    }
+
+    // TODO: Complete the service model definition
+    container vpn-cloud-connect {
+
+	list interface {
+		key "name";
+		leaf name {
+			type string;
+			mandatory "true";
+			description
+			"Interface name.";
+			}
+		leaf ip-address {
+			type string;
+			mandatory "true";
+			description
+			"IP address.";
+			}
+		leaf hostname {
+			type string;
+			mandatory "true";
+			description
+			"Hostname";
+			}
+		leaf speed-vlan {
+			type string;
+			mandatory "true";
+			description
+			"Hostname";
+			}
+		leaf route-target {
+			type string;
+			mandatory "true";
+			description
+			"VPN Route Traget";
+			}
+	}
+
+    }
+}
+
